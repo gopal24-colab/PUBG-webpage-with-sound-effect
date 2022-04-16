@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html oncontextmenu="return false;">
+<head>
+	<meta lang="en-US">
+	<meta charset="utf-8">
+	<meta http-equiv="refresh" contant="30">
+	<meta name="viewport" content="weidth=device-width, intial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<title>Battleground Mobile India</title>
+</head>
+<body>
+	<section>
+		<audio id="audio" src="images/sound.wav" autostart="false"></audio>
+	</section>
+
+	<script type="text/javascript">
+		document.addEventListener('click' ,function(e){
+			let body = document.querySelector('body');
+			let bullet = document.createElement('span');
+			let x = e.offsetX;
+			let y = e.offsetY;
+			bullet.classList.add("bullet");
+			bullet.style.left = x+"px";
+			bullet.style.top = y+"px";
+			body.appendChild(bullet);
+			//onclick sound effect
+
+			let sound = document.getElementById("audio");
+			sound.play();
+			// appear blood effect on hit effect after click
+			let blood = document.createElement("span");
+			blood.classList.add("blood");
+
+			blood.style.left = Math.random()* innerWidth +"px" ;
+			blood.style.top = Math.random()* innerHeight +"px" ;
+			body.appendChild(blood);
+
+
+			// remove bullet and blood after 4 second;
+			setTimeout(function(){
+				bullet.remove();
+				blood.remove();
+			},4000);
+		})
+	</script>
+
+</body>
+</html>
